@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Hourly weather report</title>
+    </head>
+    <body bgcolor="black" style="font-family:'Times New Roman',serif">
+        <h1 align="center" style="color:White">Hourly weather report in {{ place }} </h1>
+        <h2 align="center" style="color:White">Current time: {{ currentTime }} (GMT+3)</h2>
+        <table style="width:20%; background-color: #f5f5f5; border: 2px solid black" align="center" >
+            <tr style="font-size:30px" align="left">
+                <th>Time</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+            </tr>
+            {% for report in hourlyReportYesterday %}
+                <tr {% if report.isCurrentHour %} bgcolor="aqua" style="font-weight:bold" {% endif %}>
+                    <td>{{ report.getTime }}</td>
+                    <td>{{ report.getTempC }} °C</td>
+                    <td>{{ report.getHumidity }} %rh</td>
+                </tr>
+            {% endfor %}
+            {% for report in hourlyReport %}
+            <tr bgcolor="#6495ed" {% if report.isCurrentHour %} bgcolor="aqua" style="font-weight:bold; font-size:19px" {% endif %}>
+                <td>{{ report.getTime }}</td>
+                <td>{{ report.getTempC }} °C</td>
+                <td>{{ report.getHumidity }} %rh</td>
+            </tr>
+            {% endfor %}
+            {% for report in hourlyReportTomorrow %}
+                <tr {% if report.isCurrentHour %} bgcolor="aqua" style="font-weight:bold" {% endif %}>
+                    <td>{{ report.getTime }}</td>
+                    <td>{{ report.getTempC }} °C</td>
+                    <td>{{ report.getHumidity }} %rh</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </body>
+</html>
