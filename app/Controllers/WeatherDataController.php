@@ -8,8 +8,6 @@ class WeatherDataController
         $responseHistory = json_decode(file_get_contents('http://api.weatherapi.com/v1/history.json?key=9b2ff4a2bd594a2c88285229222107&q=' . $place . '&dt=' . $yd));
         $response = json_decode(file_get_contents('http://api.weatherapi.com/v1/forecast.json?key=9b2ff4a2bd594a2c88285229222107&q=' . $place . '&days=2'));
 
-        //echo "<pre>";
-        //var_export($response);die;
         $weatherYesterday = [];
         $weatherToday = [];
 
